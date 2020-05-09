@@ -1,0 +1,16 @@
+#!/bin/bash
+
+filename=default
+while (( $# > 0 ))
+do
+    opt="$1"
+    shift
+
+    case $opt in
+    getblockchaininfo)
+        curl --netrc-file rpc.conf --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "getblockchaininfo", "params": []}' -H 'content-type: text/plain;' http://localhost:8332 | json_pp
+        exit 0
+        ;;
+    esac
+
+done
