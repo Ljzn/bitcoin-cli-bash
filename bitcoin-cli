@@ -7,10 +7,20 @@ do
     shift
 
     case $opt in
+
     getblockchaininfo)
-        curl --netrc-file rpc.conf --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "getblockchaininfo", "params": []}' -H 'content-type: text/plain;' http://localhost:8332 | json_pp
-        exit 0
+        curl --netrc-file rpc.conf --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "getblockchaininfo", "params": []}' -H 'content-type: text/plain;' http://localhost:8332
         ;;
-    esac
+
+    getinfo)
+        curl --netrc-file rpc.conf --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "getinfo", "params": []}' -H 'content-type: text/plain;' http://localhost:8332 
+        ;;
+
+    *)
+        echo '{"result": "invalid command"}'
+        ;;
+
+    esac | json_pp
+    exit 0
 
 done
