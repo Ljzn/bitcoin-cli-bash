@@ -8,16 +8,68 @@ do
 
     case $opt in
 
+    checkjournal)
+        curl --netrc-file rpc.conf --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "checkjournal", "params": []}' -H 'content-type: text/plain;' http://localhost:8332
+        ;;
+
     getblockchaininfo)
         curl --netrc-file rpc.conf --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "getblockchaininfo", "params": []}' -H 'content-type: text/plain;' http://localhost:8332
         ;;
 
+    getbestblockhash)
+        curl --netrc-file rpc.conf --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "getbestblockhash", "params": []}' -H 'content-type: text/plain;' http://localhost:8332
+        ;;
+
+    getblockchainactivity)
+        curl --netrc-file rpc.conf --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "getblockchainactivity", "params": []}' -H 'content-type: text/plain;' http://localhost:8332
+        ;;
+
     getinfo)
         curl --netrc-file rpc.conf --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "getinfo", "params": []}' -H 'content-type: text/plain;' http://localhost:8332 
+        ;;    
+
+    getpeerinfo)
+        curl --netrc-file rpc.conf --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "getpeerinfo", "params": []}' -H 'content-type: text/plain;' http://localhost:8332
+        ;;
+
+    getchaintips)
+        curl --netrc-file rpc.conf --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "getchaintips", "params": []}' -H 'content-type: text/plain;' http://localhost:8332
+        ;;
+
+    getexcessiveblock)
+        curl --netrc-file rpc.conf --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "getexcessiveblock", "params": []}' -H 'content-type: text/plain;' http://localhost:8332
+        ;;
+
+    getmemoryinfo)
+        curl --netrc-file rpc.conf --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "getmemoryinfo", "params": []}' -H 'content-type: text/plain;' http://localhost:8332
+        ;;
+
+    getmempoolinfo)
+        curl --netrc-file rpc.conf --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "getmempoolinfo", "params": []}' -H 'content-type: text/plain;' http://localhost:8332
+        ;;
+
+    getconnectioncount)
+        curl --netrc-file rpc.conf --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "getconnectioncount", "params": []}' -H 'content-type: text/plain;' http://localhost:8332
+        ;;
+
+    getnetworkinfo)
+        curl --netrc-file rpc.conf --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "getnetworkinfo", "params": []}' -H 'content-type: text/plain;' http://localhost:8332
+        ;;
+
+    getnettotals)
+        curl --netrc-file rpc.conf --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "getnettotals", "params": []}' -H 'content-type: text/plain;' http://localhost:8332
+        ;;
+
+    gettxoutsetinfo)
+        curl --netrc-file rpc.conf --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "gettxoutsetinfo", "params": []}' -H 'content-type: text/plain;' http://localhost:8332
+        ;;
+
+    listbanned)
+        curl --netrc-file rpc.conf --data-binary '{"jsonrpc": "1.0", "id": "curltest", "method": "listbanned", "params": []}' -H 'content-type: text/plain;' http://localhost:8332
         ;;
 
     *)
-        echo '{"result": "invalid command"}'
+        echo '{"error": "invalid command"}'
         ;;
 
     esac | json_pp

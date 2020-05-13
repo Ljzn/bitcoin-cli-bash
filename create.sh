@@ -1,0 +1,11 @@
+docker run -d \
+-p 8332:8332 \
+-v bitcoin-data:/data \
+--name bitcoind bitcoinsv/bitcoin-sv bitcoind \
+-server \
+-rpcuser=user \
+-rpcpassword=password \
+-prune=25000 \
+-excessiveblocksize=2000000000 \
+-maxstackmemoryusageconsensus=200000000 \
+-reindex
