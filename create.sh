@@ -1,6 +1,10 @@
 docker run -d \
 -p 8332:8332 \
--v bitcoin-data:/data \
+-p 28332:28332 \
+-p 28333:28333 \
+-p 28334:28334 \
+-p 28335:28335 \
+-v bitcoin-data:/root/.bitcoin \
 --name bitcoind bitcoinsv/bitcoin-sv bitcoind \
 -server \
 -rpcuser=user \
@@ -8,4 +12,8 @@ docker run -d \
 -prune=25000 \
 -excessiveblocksize=2000000000 \
 -maxstackmemoryusageconsensus=200000000 \
--reindex
+-reindex \
+-zmqpubrawtx=tcp://0.0.0.0:28332 \
+-zmqpubhashtx=tcp://0.0.0.0:28333 \
+-zmqpubrawblock=tcp://0.0.0.0:28334 \
+-zmqpubhashtx=tcp://0.0.0.0:28335
